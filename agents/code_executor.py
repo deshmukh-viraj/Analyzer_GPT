@@ -19,9 +19,7 @@ async def main():
         work_dir='temp',
         timeout=120
     )
-
-    await docker.start()
-
+    
     code_executor_agent = GetCodeExecutorAgent(docker)
     task = TextMessage(
         content='''Here is the python code which you have to run.
@@ -33,6 +31,7 @@ print('Hello World')
     )
 
     try:
+        await docker.start()
         res = await code_executor_agent.on_messages(
             messages=[task],
             cancellation_token=CancellationToken()
@@ -41,8 +40,9 @@ print('Hello World')
         print('result is :',res)
     except Exception as e:
         print(e)
+    finally:
+        await docker.stop()
+
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-
