@@ -1,0 +1,26 @@
+import pandas as pd
+import os
+
+# Assuming the CSV file is named 'data.csv' and is in the working directory
+file_path = 'data.csv'
+
+# Check if the file exists
+if os.path.exists(file_path):
+    try:
+        # Read the CSV file into a pandas DataFrame
+        df = pd.read_csv(file_path)
+
+        # Get the number of rows and columns
+        num_rows, num_columns = df.shape
+
+        # Print the number of rows and columns
+        print(f"Number of rows: {num_rows}")
+        print(f"Number of columns: {num_columns}")
+        print("Task completed: Printed the number of rows and columns in the CSV file.")
+
+    except Exception as e:
+        print(f"Error reading or processing the CSV file: {e}")
+        print("Task failed: Could not determine the number of rows and columns.")
+else:
+    print(f"Error: The file '{file_path}' does not exist in the working directory.")
+    print("Task failed: File not found.")

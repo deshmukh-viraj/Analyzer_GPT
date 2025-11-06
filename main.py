@@ -8,7 +8,7 @@ from config.docker_utils import getDockerCommandLineExecutor, start_docker_conta
 
 async def main():
     model_client = get_model_client()
-    docker = getDockerCommandLineExecutor
+    docker = getDockerCommandLineExecutor()
     
     team = getDataAnalyzerTeam(docker, model_client)
 
@@ -28,5 +28,5 @@ async def main():
 
 
 
-    if __name__ == "__main__":
-        asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
