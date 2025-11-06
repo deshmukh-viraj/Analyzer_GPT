@@ -14,5 +14,3 @@ def get_model_client():
     )
 
     return model_client
-
-print("done")
