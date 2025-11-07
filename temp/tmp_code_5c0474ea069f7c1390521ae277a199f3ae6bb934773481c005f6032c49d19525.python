@@ -1,0 +1,32 @@
+import csv
+
+try:
+    # Open the CSV file
+    with open("temp/data.csv", 'r') as file:
+        reader = csv.reader(file)
+        
+        # Get the header to determine the number of columns
+        header = next(reader, None)  # Read the first line (header)
+        if header:
+            num_columns = len(header)
+        else:
+            num_columns = 0  # Handle empty file case
+        
+        # Count the number of rows
+        num_rows = 0
+        for row in reader:
+            num_rows += 1
+        
+        # Add 1 to num_rows if header exists, otherwise keep as is.
+        if header:
+            num_rows += 1
+
+        # Print the number of rows and columns
+        print(f"Number of rows: {num_rows}")
+        print(f"Number of columns: {num_columns}")
+        print("Task completed: Printed the number of rows and columns.")
+
+except FileNotFoundError:
+    print("Error: The file 'temp/data.csv' was not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")

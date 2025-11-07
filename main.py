@@ -13,7 +13,7 @@ async def main():
     team = getDataAnalyzerTeam(docker, model_client)
 
     try:
-        task = "Can you tell me how many rows and columns in directory"
+        task = "Can you tell me how many rows and columns in titanic.csv data in your working directory"
 
         await start_docker_container(docker)
 
