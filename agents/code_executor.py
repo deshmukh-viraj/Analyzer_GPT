@@ -3,7 +3,7 @@ from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
 import asyncio
 from autogen_agentchat.messages import TextMessage
 from autogen_core import CancellationToken
-
+temp_dir = os.path.abspath('temp')
 
 def GetCodeExecutorAgent(code_executor):
     code_executor_agent = CodeExecutorAgent(
@@ -16,7 +16,7 @@ def GetCodeExecutorAgent(code_executor):
 async def main():
 
     docker = DockerCommandLineCodeExecutor(
-        work_dir='temp',
+        work_dir=temp_dir,
         timeout=120
     )
     
@@ -27,7 +27,7 @@ async def main():
 print('Hello World')
 ```
 ''',
-    source='user'
+    source='User'
     )
 
     try:

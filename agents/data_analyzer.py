@@ -1,7 +1,7 @@
 from autogen_agentchat.agents import AssistantAgent
 from agents.prompts.DataAnalyzerPrompt import DATA_ANALYZER_MSG
 from config.model_client import get_model_client
-
+from autogen_agentchat.conditions import TextMentionTermination
 model_client = get_model_client()
 
 def GetDataAnalyzerAgent(model_client):
