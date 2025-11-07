@@ -1,0 +1,18 @@
+import pandas as pd
+
+try:
+    # Read the CSV file into a pandas DataFrame
+    df = pd.read_csv('data.csv')
+
+    # Get the number of columns
+    num_cols = df.shape[1]
+
+    # Print the number of columns
+    print(f"The number of columns in the CSV file is: {num_cols}")
+
+except FileNotFoundError:
+    print("Error: The file 'data.csv' was not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+print("Task completed.")

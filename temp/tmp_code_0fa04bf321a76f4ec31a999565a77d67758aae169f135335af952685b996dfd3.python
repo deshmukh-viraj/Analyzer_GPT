@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the CSV file into a pandas DataFrame
+try:
+    df = pd.read_csv("titanic.csv")
+except FileNotFoundError:
+    print("Error: The file 'titanic.csv' was not found.")
+    exit()
+except Exception as e:
+    print(f"An error occurred while reading the file: {e}")
+    exit()
+
+# Get the number of columns
+num_columns = df.shape[1]
+
+# Create a bar graph
+plt.figure(figsize=(8, 6))
+plt.bar(['Number of Columns'], [num_columns])
+plt.ylabel('Count')
+plt.title('Number of Columns in titanic.csv')
+plt.savefig('output.png')
+
+print(f"The number of columns in the dataset is: {num_columns}")
+print("A bar graph representing the number of columns has been saved as 'output.png'.")
