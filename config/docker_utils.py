@@ -1,10 +1,13 @@
 from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
 from config.constants import WORK_DIR_DOCKER, TIMEOUT_DOCKER
+import os 
 
 def getDockerCommandLineExecutor():
+    temp_dir = os.path.abspath('temp')    
     docker = DockerCommandLineCodeExecutor(
-        work_dir = WORK_DIR_DOCKER,
-        timeout = TIMEOUT_DOCKER
+        work_dir = temp_dir,
+        timeout = TIMEOUT_DOCKER,
+        bind_dir=temp_dir
     )
     return docker
 

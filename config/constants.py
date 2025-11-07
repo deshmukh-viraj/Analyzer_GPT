@@ -1,2 +1,2 @@
-WORK_DIR_DOCKER = 'temp'
+WORK_DIR_DOCKER = '/workspace'
 TIMEOUT_DOCKER = 120

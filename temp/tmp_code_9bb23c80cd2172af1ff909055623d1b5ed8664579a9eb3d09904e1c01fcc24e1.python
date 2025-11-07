@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Load the titanic.csv file into a pandas DataFrame
+try:
+    df = pd.read_csv("titanic.csv")
+except FileNotFoundError:
+    print("Error: titanic.csv not found in the working directory.")
+    exit()
+
+# Get the number of rows and columns
+num_rows, num_columns = df.shape
+
+# Print the number of rows and columns
+print(f"The titanic.csv dataset has {num_rows} rows and {num_columns} columns.")
+print("Task Completed!")

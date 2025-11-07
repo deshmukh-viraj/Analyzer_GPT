@@ -1,0 +1,19 @@
+import csv
+
+try:
+    with open("titanic.csv", 'r') as file:
+        reader = csv.reader(file)
+        header = next(reader)  # Get the header row
+        num_cols = len(header)
+        num_rows = 1  # Account for the header row
+        for row in reader:
+            num_rows += 1
+
+    print(f"The titanic.csv dataset has {num_rows} rows and {num_cols} columns.")
+
+except FileNotFoundError:
+    print("Error: The file 'titanic.csv' was not found in the working directory.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+print("Task completed.")
