@@ -1,6 +1,6 @@
 # Analyzer-GPT_with_AutoGen 🤖📊
 
-> An intelligent data analysis assistant that transforms natural language questions into executable Python code, delivering insights from your CSV data in seconds.
+An intelligent data analysis assistant that transforms natural language questions into executable Python code, delivering insights from your CSV data in seconds.
 
 ---
 
