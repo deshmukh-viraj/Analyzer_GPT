@@ -1,4 +1,4 @@
-# Analyzer-GPT_with_AutoGen 🤖📊
+# Analyzer-GPT_with_AutoGen
 
 An intelligent data analysis assistant that transforms natural language questions into executable Python code, delivering insights from your CSV data in seconds.
 
@@ -148,16 +148,6 @@ Question: "Build a churn prediction model and show performance metrics"
 
 ---
 
-## 🔒 Security & Safety
-
-### Execution Safeguards
-
-- **Sandboxed Environment**: Code runs in isolated subprocess with restricted permissions
-- **Whitelist-Based Imports**: Only approved libraries can be imported
-- **Resource Limits**: CPU time and memory constraints prevent runaway processes
-- **No File System Access**: Temporary files are strictly controlled and auto-deleted
-- **Network Isolation**: No external network calls from generated code
-
 ### Data Privacy
 
 - All data processing occurs locally
@@ -194,17 +184,6 @@ Modify `config/constants.py` for:
 - **Data Quality**: Missing value analysis, outlier detection, data profiling
 
 ---
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
-3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** to the branch (`git push origin feature/AmazingFeature`)
-5. **Open** a Pull Request
-
 
 ## 🐛 Troubleshooting
 
