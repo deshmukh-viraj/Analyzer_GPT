@@ -1,0 +1,31 @@
+import subprocess
+
+try:
+    # Install pandas using pip
+    subprocess.check_call(['pip', 'install', 'pandas'])
+    print("Pandas installed successfully.")
+
+    import pandas as pd
+
+    # Read the CSV file into a pandas DataFrame
+    try:
+        df = pd.read_csv("your_file.csv")  # Replace "your_file.csv" with the actual file name if it's different.
+        # Extract the column names
+        column_names = df.columns.tolist()
+
+        # Print the column names
+        print("Column Names:", column_names)
+        print("Task Completed: Extracted and printed column names.")
+    except FileNotFoundError:
+        print("Error: File not found. Please make sure 'your_file.csv' exists in the current directory.")
+        print("Task Failed: File not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        print("Task Failed: An error occurred while reading the CSV file.")
+
+except subprocess.CalledProcessError as e:
+    print(f"Error installing pandas: {e}")
+    print("Task Failed: Could not install pandas.")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+    print("Task Failed: An unexpected error occurred.")

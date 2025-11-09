@@ -1,0 +1,6 @@
+import pandas as pd
+
+df = pd.read_csv('/workspace/Titanic-Dataset.csv')
+
+print(df.columns)
+print("Task completed: Printed the column names of the dataset.")

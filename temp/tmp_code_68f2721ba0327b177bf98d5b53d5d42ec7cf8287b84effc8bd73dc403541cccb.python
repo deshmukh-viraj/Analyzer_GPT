@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Read the CSV file into a DataFrame
+df = pd.read_csv('/workspace/Global_Mobile_Prices_2025_Extended.csv')
+
+# Identify categorical columns
+categorical_columns = []
+for col in df.columns:
+    if df[col].dtype == 'object':
+        categorical_columns.append(col)
+
+# Print the list of categorical columns
+print("Categorical columns in the dataset:")
+print(categorical_columns)
+print("Task completed.")

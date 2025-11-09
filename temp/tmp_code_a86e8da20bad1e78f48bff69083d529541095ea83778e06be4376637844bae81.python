@@ -1,0 +1,31 @@
+import subprocess
+import sys
+
+def install_and_import(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "--timeout", "600", package])
+
+try:
+    import pandas as pd
+except ImportError:
+    install_and_import("pandas==2.2.0")
+    import pandas as pd
+
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    install_and_import("matplotlib==3.7.0")
+    import matplotlib.pyplot as plt
+
+
+df = pd.read_csv('/workspace/Global_Mobile_Prices_2025_Extended.csv')
+
+plt.figure(figsize=(10, 6))
+plt.hist(df['price_usd'], bins=20, color='skyblue', edgecolor='black')
+plt.xlabel('Price (USD)')
+plt.ylabel('Frequency')
+plt.title('Price Distribution of Mobile Phones')
+plt.grid(axis='y', alpha=0.75)
+plt.savefig('price_distribution.png')
+
+print("Price distribution graph generated and saved as price_distribution.png")
+print("Task completed.")

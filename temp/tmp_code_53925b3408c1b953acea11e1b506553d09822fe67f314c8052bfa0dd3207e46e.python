@@ -1,0 +1,29 @@
+import subprocess
+
+try:
+    import pandas as pd
+    print("Pandas is already installed.")
+except ImportError:
+    print("Pandas is not installed. Installing now...")
+    try:
+        subprocess.check_call(['pip', 'install', 'pandas', '--timeout', '120'])  # Added timeout
+        import pandas as pd
+        print("Pandas installed successfully.")
+    except subprocess.TimeoutExpired:
+        print("Pandas installation timed out.")
+    except subprocess.CalledProcessError as e:
+        print(f"Pandas installation failed with error: {e}")
+
+# Read the CSV file into a DataFrame
+df = pd.read_csv('/workspace/Global_Mobile_Prices_2025_Extended.csv')
+
+# Identify categorical columns
+categorical_columns = []
+for col in df.columns:
+    if df[col].dtype == 'object':
+        categorical_columns.append(col)
+
+# Print the list of categorical columns
+print("Categorical columns in the dataset:")
+print(categorical_columns)
+print("Task completed.")

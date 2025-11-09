@@ -1,0 +1,46 @@
+import subprocess
+
+try:
+    # Install pandas using pip
+    subprocess.check_call(['pip', 'install', 'pandas'])
+    print("pandas installed successfully.")
+
+    # Install seaborn using pip
+    subprocess.check_call(['pip', 'install', 'seaborn'])
+    print("seaborn installed successfully.")
+
+    # Install matplotlib using pip
+    subprocess.check_call(['pip', 'install', 'matplotlib'])
+    print("matplotlib installed successfully.")
+
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    # Load the CSV file into a pandas DataFrame
+    df = pd.read_csv("your_file.csv")  # Replace "your_file.csv" with the actual file name
+
+    # Calculate the correlation matrix
+    correlation_matrix = df.corr()
+
+    # Create a heatmap using seaborn
+    plt.figure(figsize=(12, 10))  # Adjust figure size as needed
+    sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f", linewidths=.5)
+    plt.title("Correlation Heatmap")
+    plt.xticks(rotation=45, ha="right")  # Rotate x-axis labels for better readability
+    plt.yticks(rotation=0)  # Ensure y-axis labels are horizontal
+
+    # Show the heatmap
+    plt.tight_layout()  # Adjust layout to prevent labels from overlapping
+    plt.show()
+
+    print("Correlation heatmap generated and displayed successfully.")
+
+except FileNotFoundError:
+    print("Error: The file 'your_file.csv' was not found. Please make sure the file exists and the path is correct.")
+except ModuleNotFoundError as e:
+    print(f"Module not found: {e}. Please make sure all necessary libraries are installed.")
+except subprocess.CalledProcessError as e:
+    print(f"Error installing packages: {e}")
+except Exception as e:
+    print(f"An error occurred: {e}")

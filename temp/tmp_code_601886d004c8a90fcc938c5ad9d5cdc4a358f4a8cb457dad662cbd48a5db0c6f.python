@@ -1,0 +1,18 @@
+import pandas as pd
+
+try:
+    # Read the CSV file into a pandas DataFrame
+    df = pd.read_csv("your_file.csv")  # Replace "your_file.csv" with the actual file name if it's different
+
+    # Extract the column names
+    column_names = df.columns.tolist()
+
+    # Print the column names
+    print(column_names)
+    print("Task completed: Extracted and printed the column names from the CSV file.")
+
+except FileNotFoundError:
+    print("Error: The file 'your_file.csv' was not found. Please make sure the file exists and the path is correct.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+    print("Task failed: Unable to extract column names due to an error.")

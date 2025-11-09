@@ -1,0 +1,38 @@
+!pip install -qqq pandas
+!pip install -qqq matplotlib
+import pandas as pd
+import matplotlib.pyplot as plt
+
+try:
+    # Load the dataset from the CSV file
+    df = pd.read_csv("your_dataset.csv")  # Replace "your_dataset.csv" with the actual filename
+
+    # Check if the 'gender' column exists
+    if 'gender' not in df.columns:
+        print("Error: 'gender' column not found in the dataset.")
+    else:
+        # Count the occurrences of each gender
+        gender_counts = df['gender'].value_counts()
+
+        # Create a bar graph
+        plt.figure(figsize=(8, 6))  # Adjust figure size for better readability
+        gender_counts.plot(kind='bar')
+
+        # Add labels and title
+        plt.title('Gender Distribution')
+        plt.xlabel('Gender')
+        plt.ylabel('Count')
+
+        # Rotate x-axis labels for better readability
+        plt.xticks(rotation=0)
+
+        # Display the graph
+        plt.tight_layout()  # Adjust layout to prevent labels from overlapping
+        plt.show()
+        print("Gender distribution graph displayed successfully.")
+
+except FileNotFoundError:
+    print("Error: The file 'your_dataset.csv' was not found. Please make sure the file exists and the path is correct.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+print("Task completed")

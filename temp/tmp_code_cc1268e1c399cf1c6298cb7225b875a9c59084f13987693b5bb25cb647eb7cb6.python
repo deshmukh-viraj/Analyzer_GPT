@@ -1,0 +1,19 @@
+try:
+    import pandas as pd
+    import matplotlib.pyplot as plt
+except ImportError as e:
+    print(f"Error importing libraries: {e}. Unable to generate the price distribution graph.")
+    print("Task cannot be completed due to missing libraries.")
+else:
+    df = pd.read_csv('/workspace/Global_Mobile_Prices_2025_Extended.csv')
+
+    plt.figure(figsize=(10, 6))
+    plt.hist(df['price_usd'], bins=20, color='skyblue', edgecolor='black')
+    plt.xlabel('Price (USD)')
+    plt.ylabel('Frequency')
+    plt.title('Price Distribution of Mobile Phones')
+    plt.grid(axis='y', alpha=0.75)
+    plt.savefig('price_distribution.png')
+
+    print("Price distribution graph generated and saved as price_distribution.png")
+    print("Task completed.")

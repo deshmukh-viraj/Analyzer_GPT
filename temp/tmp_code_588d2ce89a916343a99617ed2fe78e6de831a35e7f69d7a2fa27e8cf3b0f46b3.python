@@ -1,0 +1,8 @@
+import csv
+
+with open('/workspace/Titanic-Dataset.csv', 'r') as f:
+    reader = csv.reader(f)
+    header = next(reader)
+
+print(header)
+print("Task completed: Printed the column names of the dataset.")

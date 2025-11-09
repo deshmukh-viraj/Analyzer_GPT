@@ -1,0 +1,63 @@
+import subprocess
+import sys
+
+try:
+    # Try importing pandas to check if it's installed
+    import pandas as pd
+    print("Pandas is already installed.")
+except ImportError:
+    # If pandas is not installed, install it using pip
+    print("Pandas is not installed. Installing...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "pandas"])
+    print("Pandas installed successfully.")
+
+try:
+    # Try importing matplotlib to check if it's installed
+    import matplotlib.pyplot as plt
+    print("Matplotlib is already installed.")
+except ImportError:
+    # If matplotlib is not installed, install it using pip
+    print("Matplotlib is not installed. Installing...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "matplotlib"])
+    print("Matplotlib installed successfully.")
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+try:
+    # Read the CSV file into a pandas DataFrame
+    df = pd.read_csv("your_dataset.csv")  # Replace "your_dataset.csv" with the actual file name
+
+    # Identify potential gender columns (case-insensitive)
+    gender_cols = [col for col in df.columns if 'gender' in col.lower() or 'sex' in col.lower()]
+
+    if not gender_cols:
+        print("Error: No column containing 'gender' or 'sex' found. Please rename the column or specify which column represents gender.")
+    else:
+        gender_col = gender_cols[0]  # Assume the first matching column is the gender column
+
+        # Calculate gender distribution
+        gender_counts = df[gender_col].value_counts()
+
+        # Create the graph
+        plt.figure(figsize=(8, 6))  # Adjust figure size for better readability
+        gender_counts.plot(kind='bar')
+        plt.title('Gender Distribution')
+        plt.xlabel('Gender')
+        plt.ylabel('Number of Individuals')
+        plt.xticks(rotation=0)  # Rotate x-axis labels for better readability
+        plt.grid(axis='y', linestyle='--') # Adding grid lines
+
+        # Display the graph
+        plt.tight_layout()  # Adjust layout to prevent labels from overlapping
+        plt.show()
+
+        print(f"Gender distribution graph created and displayed based on column '{gender_col}'.")
+
+except FileNotFoundError:
+    print("Error: File 'your_dataset.csv' not found. Please make sure the file exists in the working directory.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+print("Task completed.")

@@ -1,0 +1,11 @@
+import pandas as pd
+
+df = pd.read_csv('/workspace/Global_Mobile_Prices_2025_Extended.csv')
+
+numerical_cols = []
+for col in df.columns:
+    if pd.api.types.is_numeric_dtype(df[col]):
+        numerical_cols.append(col)
+
+print("Numerical columns in the dataset:", numerical_cols)
+print("Task completed.")

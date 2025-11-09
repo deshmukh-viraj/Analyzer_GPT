@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+try:
+    # Load the CSV file into a pandas DataFrame
+    df = pd.read_csv("your_file.csv")  # Replace "your_file.csv" with the actual file name
+
+    # Calculate the correlation matrix
+    correlation_matrix = df.corr()
+
+    # Create a heatmap using seaborn
+    plt.figure(figsize=(8, 6))  # Adjust figure size as needed
+    sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")
+    plt.title("Correlation Matrix Heatmap")
+    plt.show()
+
+    print("Correlation heatmap generated and displayed successfully.")
+
+except FileNotFoundError:
+    print("Error: The file 'your_file.csv' was not found. Please make sure the file exists and the path is correct.")
+except Exception as e:
+    print(f"An error occurred: {e}")

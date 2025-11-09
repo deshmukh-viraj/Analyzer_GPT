@@ -1,0 +1,20 @@
+import subprocess
+import sys
+
+try:
+    import pandas as pd
+    print("Pandas is already installed.")
+except ImportError:
+    print("Pandas is not installed. Installing...")
+    try:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas', '--timeout=60'])
+        print("Pandas installed successfully.")
+    except subprocess.TimeoutExpired:
+        print("Pandas installation timed out.")
+
+import pandas as pd
+
+df = pd.read_csv('/workspace/Titanic-Dataset.csv')
+
+print(df.columns)
+print("Task completed: Printed the column names of the dataset.")
